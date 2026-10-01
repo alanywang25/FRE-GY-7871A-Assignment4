@@ -1,4 +1,4 @@
-# AI risk sentiment event study (September 8-29, 2026)
+# AI risk sentiment event study (September 8-30, 2026)
 
 This repository studies the short reaction to the September 8, 2026 AI-risk discussion involving Anthropic employees. It uses a transparent, deliberately narrow design: X posts establish the event; dated Google News RSS headlines provide the reproducible daily coverage proxy; and Yahoo Finance adjusted closes supply returns for an equal-weight AI basket.
 

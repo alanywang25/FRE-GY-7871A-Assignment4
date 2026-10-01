@@ -1,6 +1,6 @@
 # AI-risk coverage and AI equities: an exploratory event study
 
-**Observed window: September 8-29, 2026**  
+**Observed window: September 8-30, 2026**  
 **Prepared: September 30, 2026**
 
 ## Executive summary
@@ -19,27 +19,20 @@ The event date is September 8, 2026, based on the supplied X post. The empirical
 
 The event is social-media originated: Coxon posted his resignation and warning on X; Hubinger publicly endorsed the concern; the supplied account link is [@EvanHub](https://x.com/EvanHub). These posts are the event anchor, not a representative sample of X. Rather than label an incomplete social-media scrape as “social-media sentiment,” the quantitative measure is explicitly limited to **news headlines**.
 
-The notebook pulls two dated Google News RSS searches, caches the exact XML locally, and filters to September 8-29.
+The notebook pulls two dated Google News RSS searches, caches the exact XML locally, and filters to September 8-30.
 
 1. **Event/risk sample:** Hubinger, Coxon, or Anthropic combined with AI-risk/existential/humanity terms. It yielded 56 headlines on eight calendar dates (September 9, 10, 11, 13, 14, 16, 23, and 29).
 2. **Broad-AI comparison sample:** “artificial intelligence” or AI. It yielded 99 headlines in the same window.
 
 Each headline receives two transparent scores: VADER’s compound sentiment score and a risk-intensity score, `(negative-risk terms − positive/safety terms) / headline word count`. The lexicon is printed in the notebook. This follows the spirit, not the scale, of Sacerdote, Sehgal, and Cook’s comparison of COVID coverage with alternatives: compare tone against a contemporaneous benchmark and state the universe constraint. Their result used millions of articles and human/ML validation; this project uses a small, provider-ranked RSS sample and therefore makes no claim about all media.
 
-The original notebook displays the following first ten dated event-query headlines. They are a transparent illustration of the sample, rather than a separate source or an additional social-media dataset.
+The original notebook displays the first ten dated event-query headlines. A compact illustration is below; it is not a separate source or an additional social-media dataset.
 
 | Date | Headline as displayed in notebook | Source |
 |---|---|---|
-| Sep. 9 | Ex-Anthropic Researcher Warns AI Threat to Hum… | 조선일보 |
-| Sep. 9 | A researcher warned AI could end humanity. Con… | USA Today |
 | Sep. 9 | Anthropic Researchers Raise Alarm Over A.I. Ac… | The New York Times |
 | Sep. 9 | Anthropic insiders warn AI could kill all huma… | Axios |
-| Sep. 9 | Experts weigh in as researcher says AI has mor… | CNBC |
-| Sep. 9 | Anthropic Worker Quits Over AI Firms ‘Gambling… | bloomberg.com |
-| Sep. 9 | AI could kill humanity, warns Anthropic scient… | Firstpost |
 | Sep. 9 | Anthropic researcher believes more than 10% ch… | BBC |
-| Sep. 9 | AI researchers ‘earnestly believe’ it could ki… | CBC |
-| Sep. 9 | Could AI wipe out humanity in a decade? An Ant… | The Independent |
 
 The attached Twitter and finance studies motivate daily aggregation and a relative sentiment construction. In particular, the finance study defines log returns and a relative sentiment measure based on positive and negative daily messages. Here, daily log returns and a transparent headline polarity proxy replace proprietary Twitter counts. Carvalho and Plastino motivate caution because short, informal posts are difficult to classify; that concern is one reason this analysis does not claim that the supplied posts alone measure public sentiment.
 
@@ -61,26 +54,16 @@ The event/risk sample is substantially more negative than the broad-AI sample.
 
 The daily pattern is concentrated rather than smoothly trending. The original event produces a September 9 burst of 10 sampled headlines, with negative mean tone (−0.516). Covered trading dates remain negative through September 23, including September 10 (−0.721) and September 16 (−0.461). A much larger September 29 cluster belongs to a later Anthropic IPO-risk disclosure story and should be treated as a separate information shock, rather than mechanically attributed to the September 8 posts. September 29 and September 30 trading returns are now included; only September 29 has sampled event-query coverage. No-coverage days are assigned zero, meaning no sampled headline activity rather than negative sentiment.
 
-![Original notebook chart: daily news-risk intensity and AI-basket excess return](figures/original_notebook_export_files/original_notebook_export_6_0.png)
+<img src="figures/original_notebook_export_files/original_notebook_export_6_0.png" alt="Daily news-risk intensity and AI-basket excess return" width="560" />
 
-The chart and table below reproduce the original notebook’s aligned daily panel. Returns are decimal log returns; `0.0000` for the two news variables denotes no sampled event-query headline that day, not neutral public sentiment.
+The chart and selected-date table below reproduce the key movements in the original notebook’s aligned daily panel; the full 16-day panel remains in the notebook. Returns are decimal log returns; `0.0000` for the news variables denotes no sampled event-query headline, not neutral public sentiment.
 
 | Date | Headlines | Mean compound | Risk intensity | Basket return | Basket excess return |
 |---|---:|---:|---:|---:|---:|
 | Sep. 9 | 10 | −0.5160 | 0.1096 | −0.0016 | 0.0031 |
 | Sep. 10 | 2 | −0.7211 | 0.1083 | −0.0084 | −0.0024 |
-| Sep. 11 | 3 | −0.5356 | 0.0778 | 0.0091 | 0.0006 |
 | Sep. 14 | 4 | −0.4070 | 0.1234 | −0.0077 | −0.0032 |
-| Sep. 15 | 0 | 0.0000 | 0.0000 | −0.0090 | −0.0044 |
-| Sep. 16 | 3 | −0.4607 | 0.1590 | −0.0006 | 0.0038 |
-| Sep. 17 | 0 | 0.0000 | 0.0000 | 0.0200 | 0.0087 |
-| Sep. 18 | 0 | 0.0000 | 0.0000 | 0.0052 | 0.0039 |
-| Sep. 21 | 0 | 0.0000 | 0.0000 | 0.0315 | 0.0161 |
-| Sep. 22 | 0 | 0.0000 | 0.0000 | −0.0015 | −0.0014 |
 | Sep. 23 | 2 | −0.4450 | 0.0911 | −0.0142 | −0.0070 |
-| Sep. 24 | 0 | 0.0000 | 0.0000 | 0.0065 | 0.0073 |
-| Sep. 25 | 0 | 0.0000 | 0.0000 | 0.0022 | −0.0032 |
-| Sep. 28 | 0 | 0.0000 | 0.0000 | −0.0097 | −0.0022 |
 | Sep. 29 | 31 | −0.3316 | 0.1981 | 0.0065 | 0.0083 |
 | Sep. 30 | 0 | 0.0000 | 0.0000 | 0.0001 | 0.0022 |
 
@@ -103,6 +86,43 @@ For each driver, the notebook runs a one-lag bivariate Granger test with basket 
 | Headline count | 0.8533 | Do not reject |
 
 There are 16 usable daily observations. With a lag and an intercept, degrees of freedom are extremely limited; zeros on no-coverage days further weaken variation. A Granger test also says nothing by itself about structural causality. Accordingly, the evidence does **not** show that changes in the measured sentiment Granger-caused positive or negative returns. It also cannot establish the reverse. A credible extension would use a longer pre/post period, article-body text, an independently sampled social-data universe, a pre-specified universe of outlets, and a market-model event-study design with controls.
+
+## Hacker News social-discourse analysis
+
+The separate public-source notebook collects a fixed-query sample of Hacker News stories and comments using the public Algolia index. It searches `Evan Hubinger`, `Jacob Coxon`, `Anthropic AI risk`, and `Anthropic alignment`, deduplicates observations, and applies the same VADER and transparent risk-intensity measures used for the news analysis. This is a query-defined, technically oriented community sample; it is not a representative sample of all X users, investors, or the public.
+
+| Hacker News measure, Sep. 8–30 | Result |
+|---|---:|
+| Unique stories/comments | 211 |
+| Covered calendar days | 23 |
+| Mean VADER compound | −0.0350 |
+| Mean risk intensity | 0.0163 |
+| Median engagement | 1 |
+| AI-basket cumulative return | +2.88% |
+| SPY cumulative return | −0.19% |
+
+The sample is sustained but uneven: it has 25 observations on September 9, 18 on September 10, and 12 on September 29. Mean tone is mildly negative overall, rather than uniformly catastrophic. These patterns describe a selected discussion sample, not platform-wide social sentiment.
+
+<img src="figures/hackernews_notebook_export_files/hackernews_notebook_export_4_3.png" alt="Hacker News post volume, sentiment, risk intensity, and AI-basket excess return" width="560" />
+
+| Selected date | HN posts | Mean compound | Risk intensity | Basket excess return |
+|---|---:|---:|---:|---:|
+| Sep. 9 | 25 | −0.0087 | 0.0206 | 0.0031 |
+| Sep. 10 | 18 | −0.2797 | 0.0201 | −0.0024 |
+| Sep. 14 | 8 | −0.3802 | 0.0276 | −0.0032 |
+| Sep. 29 | 12 | −0.4252 | 0.0833 | 0.0083 |
+| Sep. 30 | 7 | 0.6675 | 0.0054 | 0.0022 |
+
+The same one-lag bivariate Granger design supplies no detectable incremental predictive signal from this Hacker News sample to next-day basket excess return.
+
+| Lag-1 Hacker News driver | p-value | Result at 5% |
+|---|---:|---|
+| Mean compound sentiment | 0.6543 | Do not reject |
+| Risk intensity | 0.4484 | Do not reject |
+| Post count | 0.7680 | Do not reject |
+| Engagement-weighted compound | 0.7159 | Do not reject |
+
+These tests have only 16 aligned trading observations and are not structural-causality tests. The source-specific conclusion is that this sample contains episodic risk-oriented discussion but no reliable one-day-ahead association with basket excess return.
 
 ## Conclusion
 
