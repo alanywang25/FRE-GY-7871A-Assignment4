@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+statsmodels
+yfinance
+requests
+vaderSentiment
+nbformat
+ipykernel
