@@ -2,18 +2,16 @@
 
 This repository studies the short reaction to the September 8, 2026 AI-risk discussion involving Anthropic employees. It uses a transparent, deliberately narrow design: X posts establish the event; dated Google News RSS headlines provide the reproducible daily coverage proxy; and Yahoo Finance adjusted closes supply returns for an equal-weight AI basket.
 
-## Separate public-social collectors
+## X-post collector
 
-- `Public_Bluesky_Collection.ipynb` collects a query-defined Bluesky public-post sample.
-- `X_Full_Archive_Sentiment_Analysis.ipynb` is an optional X full-archive implementation. It requires endpoint entitlement and usage credits; its bearer token belongs in the ignored `secrets/x_bearer_token.txt` file or `X_BEARER_TOKEN` environment variable.
-- `TwitterAPIio_Archive_Sentiment_Analysis.ipynb` is an optional third-party X-post archive implementation. It reads its API key from ignored `secrets/twitterapi_io_key.txt` or `TWITTERAPI_IO_KEY`; its analysis runs only after the provider returns data.
+- `TwitterAPIio_Archive_Sentiment_Analysis.ipynb` collects a dated, query-defined X-post sample through TwitterAPI.io. Its API key belongs in ignored `secrets/twitterapi_io_key.txt` or `TWITTERAPI_IO_KEY`.
 
-Both cache raw responses under ignored `data/raw/` and are deliberately separate from the original news-and-equities event-study notebook. Reddit is not collected because its Data API requires OAuth; YouTube comments are not collected because its Data API requires a key.
+Both notebooks cache raw inputs under ignored `data/raw/` and are deliberately separated by data source.
 
 ## Deliverables
 
 - `AI_Sentiment_Event_Study.ipynb` - data collection, cleaning, charting, return construction, and Granger tests.
-- `Public_Bluesky_Collection.ipynb`, `X_Full_Archive_Sentiment_Analysis.ipynb`, and `TwitterAPIio_Archive_Sentiment_Analysis.ipynb` - separate optional social-source implementations.
+- `TwitterAPIio_Archive_Sentiment_Analysis.ipynb` - X-post collection, cleaning, charting, return construction, and Granger tests.
 - `REPORT.md` - 5-6 page-equivalent research report with results, caveats, and sources.
 - `AI_USE.md` - AI-use disclosure.
 
